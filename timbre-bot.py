@@ -43,7 +43,6 @@ def handle(msg):
     elif command == '/ring' :
         process = subprocess.Popen(['bash', '/home/pi/timbre/timbre_status.sh', 'ring'], stdout=subprocess.PIPE)
         out, err = process.communicate()
-       # print(out)
         bot.sendMessage(chat_id, 'Ring test OK')
 
     else : 
@@ -52,6 +51,5 @@ def handle(msg):
 
 bot = telepot.Bot('77sahsjahjsahjshjahsjaM')
 MessageLoop(bot, handle).run_as_thread()
-#print 'I am listening ...'
 while 1:
     time.sleep(10)
