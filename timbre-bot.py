@@ -50,7 +50,7 @@ def handle(msg):
         bot.sendMessage(chat_id, 'Comando Incorrecto')
 
 
-bot = telepot.Bot('779238274:AAE5ZLrWaVaBzevzCouvag2osqzT7DTmSiM')
+bot = telepot.Bot('77sahsjahjsahjshjahsjaM')
 MessageLoop(bot, handle).run_as_thread()
 #print 'I am listening ...'
 while 1:
