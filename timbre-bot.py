@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 import time
 import random
 import datetime
@@ -43,13 +44,15 @@ def handle(msg):
     elif command == '/ring' :
         process = subprocess.Popen(['bash', '/home/pi/timbre/timbre_status.sh', 'ring'], stdout=subprocess.PIPE)
         out, err = process.communicate()
+       # print(out)
         bot.sendMessage(chat_id, 'Ring test OK')
 
     else : 
         bot.sendMessage(chat_id, 'Comando Incorrecto')
 
 
-bot = telepot.Bot('77sahsjahjsahjshjahsjaM')
+bot = telepot.Bot('7apitelegramkeyyy')
 MessageLoop(bot, handle).run_as_thread()
+#print 'I am listening ...'
 while 1:
     time.sleep(10)
