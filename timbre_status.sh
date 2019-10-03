@@ -48,13 +48,12 @@ case $1 in
 			bash $SCRPATH/timbre.sh monitor &
 		fi;;
 
-"ring") if [ $RUN -eq 1 ]
-                then
-			 gpio write $P_OUTPUT 0
-        		 sleep 2
-        		 gpio write $P_OUTPUT 1
-                fi;;
+"ring") gpio write $P_OUTPUT 0
+        sleep 2
+        gpio write $P_OUTPUT 1;;
 
+"foto") uvccapture -m -x640 -y480 -B100 -S190 -C180 -G2 -o"$SCRPATH/timbre.jpg"
+	python3 $SCRPATH/telegram.py;; 
 
 
 *) echo 'Opciones:
@@ -64,8 +63,8 @@ case $1 in
 	status: Inidica si el proceso esta corriendo o no.
 	monitor: si esta corriendo el proceso lo detiene e inicia en modo monitor. Si no esta correindo lo inicia en modo monitor. El modo
 	monitor realiza el monitoreo del pulsador pero no suena la campanilla solo hace el registro del evento
-	ring: Hace sonar el timbre';;
+	ring: Hace sonar el timbre.
+        foto: Hace una captura de la camara';;
 
 esac
-
 

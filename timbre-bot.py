@@ -44,14 +44,18 @@ def handle(msg):
     elif command == '/ring' :
         process = subprocess.Popen(['bash', '/home/pi/timbre/timbre_status.sh', 'ring'], stdout=subprocess.PIPE)
         out, err = process.communicate()
-       # print(out)
         bot.sendMessage(chat_id, 'Ring test OK')
 
+    elif command == '/foto' :
+        process = subprocess.Popen(['bash', '/home/pi/timbre/timbre_status.sh', 'foto'], stdout=subprocess.PIPE)
+        out, err = process.communicate()
+        bot.sendMessage(chat_id, 'Foto test OK')
+
     else : 
-        bot.sendMessage(chat_id, 'Comando Incorrecto')
+        bot.sendMessage(chat_id, 'Comando Incorrecto. Usar /status /monitor /start /stop /restsrt /ring /foto')
 
 
-bot = telepot.Bot('7apitelegramkeyyy')
+bot = telepot.Bot('apikeytelegram')
 MessageLoop(bot, handle).run_as_thread()
 #print 'I am listening ...'
 while 1:
