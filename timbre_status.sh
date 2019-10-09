@@ -55,6 +55,9 @@ case $1 in
 "foto") uvccapture -m -x640 -y480 -B100 -S190 -C180 -G2 -o"$SCRPATH/timbre.jpg"
 	python3 $SCRPATH/telegram.py;; 
 
+"gge")  avconv -i 'rtsp://dvr:554/user=&password=&channel=1&stream=0.sdp' -r 30 -frames 1 $SCRPATH/camgge.png
+        python3 $SCRPATH/telegram-gge.py;;
+
 
 *) echo 'Opciones:
 	start: inicia el proceso de monitoreo del timbre. Si el proceso esta corriendo avisa con que pid.
@@ -64,7 +67,8 @@ case $1 in
 	monitor: si esta corriendo el proceso lo detiene e inicia en modo monitor. Si no esta correindo lo inicia en modo monitor. El modo
 	monitor realiza el monitoreo del pulsador pero no suena la campanilla solo hace el registro del evento
 	ring: Hace sonar el timbre.
-        foto: Hace una captura de la camara';;
+        foto: Hace una captura de la camara
+	gge: Hace una captura de la camara del garage';;
 
 esac
 

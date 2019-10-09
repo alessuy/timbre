@@ -51,6 +51,12 @@ def handle(msg):
         out, err = process.communicate()
         bot.sendMessage(chat_id, 'Foto test OK')
 
+    elif command == '/gge' :
+        process = subprocess.Popen(['bash', '/home/pi/timbre/timbre_status.sh', 'gge'], stdout=subprocess.PIPE)
+        out, err = process.communicate()
+        bot.sendMessage(chat_id, 'Foto Garage OK')
+
+
     else : 
         bot.sendMessage(chat_id, 'Comando Incorrecto. Usar /status /monitor /start /stop /restsrt /ring /foto')
 
